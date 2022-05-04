@@ -27,6 +27,20 @@ public class CommandProvider {
         commands.put(CommandName.ADDTOORDER, new AddToOrder());
         commands.put(CommandName.DELETEDISH, new DeleteDish());
         commands.put(CommandName.UPDATEDISH, new UpdateDish());
+        commands.put(CommandName.GOTOGALLERYPAGE, new GoToGalleryPage());
+        commands.put(CommandName.GOTOABOUTPAGE, new GoToAboutPage());
+        commands.put(CommandName.GOTOMAKEORDERPAGE, new GoToMakeOrderPage());
+        commands.put(CommandName.GOTORESERVATIONPAGE, new GoToReservationPage());
+        commands.put(CommandName.GOTOUSERORDERSPAGE, new GoToUserOrdersPage());
+        commands.put(CommandName.GOTOALLUSERORDERSPAGE, new GoToAllUserOrdersPage());
+        commands.put(CommandName.DELETEDISHINORDER, new DeleteDishInOrder());
+        commands.put(CommandName.SEARCHDISH, new SearchDish());
+        commands.put(CommandName.SORTDISHBYTITLE, new SortDish());
+        commands.put(CommandName.SORTDISHBYPRICEUP, new SortDish());
+        commands.put(CommandName.SORTDISHBYPRICEDOWN, new SortDish());
+        commands.put(CommandName.GOTOPASSWORDRECOVERYPAGE, new GoToPasswordRecoveryPage());
+        commands.put(CommandName.PASSWORDRECOVERY, new PasswordRecovery());
+        commands.put(CommandName.GOTOPERSONALACCOUNTPAGE, new GoToPersonalAccountPage());
     }
 
     public Command takeCommand(String name){

@@ -15,6 +15,7 @@
     <fmt:message bundle="${loc}" key="editdish.lable.isAvailable" var="isAvailable"/>
     <fmt:message bundle="${loc}" key="editdish.lable.picturePath" var="picturePath"/>
     <fmt:message bundle="${loc}" key="editdish.button" var="editdishButton"/>
+    <fmt:message bundle="${loc}" key="currency.byn" var="byn"/>
 </head>
 <body>
 <jsp:include page="../part/header.jsp"/>
@@ -37,17 +38,23 @@
         ${description}:<br />
         <textarea name="description" cols="50" rows="5" class="bo-rad-10 txt36 p-l-20">${dish.description}</textarea><br/>
         ${price}:<br />
-        <input type="text" name="price" class="bo-rad-10 txt36 p-l-20 size1" value="${dish.price}" /> BYN<br />
+        <input type="text" name="price" class="bo-rad-10 txt36 p-l-20 size1" value="${dish.price}" /> ${byn}<br />
         ${calorieContent}:<br />
         <input type="text" name="calorieContent" class="bo-rad-10 txt36 p-l-20 size1" value="${dish.calorieContent}" /><br />
         ${isAvailable}:<br />
-        <input type="checkbox" name="isAvailable" value="${dish.available}" /><br />
+        <input type="checkbox" name="isAvailable" onclick="refreshCheckboxValue(this)" value="${dish.available}" /><br />
         ${picturePath}:<br />
         <input type="file" name="picturePath" multiple accept="image/*,image/jpeg" value="${dish.picturePath}" /><br />
         <br />
         <button type="submit"  class="btn3 flex-c-m size13 txt11 trans-0-4">${editdishButton}</button> <br /><br />
     </form>
 </center>
+
+<script type="text/javascript">
+    function refreshCheckboxValue(checkbox){
+        checkbox.value = checkbox.checked;
+    }
+</script>
 
 <jsp:include page="../part/footer.jsp"/>
 </body>

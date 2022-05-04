@@ -14,6 +14,11 @@
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="locale" var="loc" />
     <fmt:message bundle="${loc}" key="main.lable" var="lable"/>
+    <fmt:message bundle="${loc}" key="main.lable.viewingDishes" var="viewingDishes"/>
+    <fmt:message bundle="${loc}" key="main.lable.addDish" var="addDish"/>
+    <fmt:message bundle="${loc}" key="main.lable.makeOrder" var="makeOrder"/>
+    <fmt:message bundle="${loc}" key="main.lable.viewOrders" var="viewOrders"/>
+    <fmt:message bundle="${loc}" key="main.lable.personalaccount" var="personalaccount"/>
 </head>
 <body>
 
@@ -31,14 +36,23 @@
 
 <section>
     <div class="container" id="catalog">
+
         <c:if test="${sessionScope.userRole == 'ADMIN'}">
         <form action="Controller" method="post" >
-            <a href="Controller?command=gotomenupage" class="txt4">Просмотр блюд</a><br/>
-            <a href="Controller?command=gotoadddishpage" class="txt4">Добавить блюдо</a><br /><br />
-            <a href="" class="txt4">Просмотр меню</a><br/>
-            <a href="" class="txt4">Составить меню</a><br/>
+            <a href="Controller?command=gotopersonalaccountpage" class="txt4">${personalaccount}</a><br /><br/>
+            <a href="Controller?command=gotomenupage" class="txt4">${viewingDishes}</a><br/>
+            <a href="Controller?command=gotoadddishpage" class="txt4">${addDish}</a><br /><br />
+            <a href="Controller?command=gotoalluserorderspage" class="txt4">${viewOrders}</a><br /><br/>
         </form>
             <br/>
+        </c:if>
+        <c:if test="${sessionScope.userRole == 'USER'}">
+            <form action="Controller" method="post">
+                <a href="Controller?command=gotopersonalaccountpage" class="txt4">${personalaccount}</a><br /><br/>
+                <a href="Controller?command=gotomenupage" class="txt4">${viewingDishes}</a><br/>
+                <a href="Controller?command=gotomakeorderpage" class="txt4">${makeOrder}</a><br/><br/>
+                <a href="Controller?command=gotouserorderspage" class="txt4">${viewOrders}</a><br/><br/>
+            </form>
         </c:if>
     </div>
 </section>

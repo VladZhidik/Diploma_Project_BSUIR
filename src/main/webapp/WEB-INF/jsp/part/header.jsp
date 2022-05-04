@@ -77,23 +77,15 @@
                             </li>
 
                             <li>
-                                <a href="reservation.html">${reservation}</a>
+                                <a href="Controller?command=gotoreservationpage">${reservation}</a>
                             </li>
 
                             <li>
-                                <a href="gallery.html">${gallery}</a>
+                                <a href="Controller?command=gotogallerypage">${gallery}</a>
                             </li>
 
                             <li>
-                                <a href="about.html">${about}</a>
-                            </li>
-
-                            <li>
-                                <a href="blog.html">${blog}</a>
-                            </li>
-
-                            <li>
-                                <a href="contact.html">${contact}</a>
+                                <a href="Controller?command=gotoaboutpage">${about}</a>
                             </li>
 
                         </ul>
@@ -105,7 +97,7 @@
                         <li>
                             <div class="dropdown choose-country">
                                 <a type="submit"  data-toggle="dropdown" href="">
-                                    <img src="${pageContext.request.contextPath}/static/img/flags/globus2.png" alt="language"/>
+                                    <img src="${pageContext.request.contextPath}/static/img/flags/globus4.png" alt="language"/>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="menuitem"><form action="Controller" class="locale" method="post">
@@ -124,6 +116,9 @@
                         </li>
                         </c:if>
                         <c:if test="${user != null}">
+                            <li>
+                                <a href="Controller?command=gotomainpage"><c:out value="${sessionScope.userRole}"/></a>
+                            </li>
                             <li>
                                 <a href="Controller?command=logout">${logout}</a>
                             </li>

@@ -1,5 +1,6 @@
 package by.jwd.restaurant.controller.command.impl.go;
 
+import by.jwd.restaurant.constant.SessionAttributes;
 import by.jwd.restaurant.controller.command.Command;
 import by.jwd.restaurant.entity.Role;
 
@@ -18,17 +19,18 @@ public class GoToMainPage implements Command {
         HttpSession session = request.getSession();
 
         if(session == null) {
-            response.sendRedirect("Controller?command=gotologinpage&message=eeerrror2");
+            response.sendRedirect("Controller?command=gotohomepage&message=eeerrror2");
             return;
         }
 
         Integer id = null;
 
-        if(session.getAttribute("userRole") == Role.ADMIN){
-            id = (Integer) session.getAttribute("userId");
-        } else if(session.getAttribute("userRole") == Role.USER){
-            id = (Integer) session.getAttribute("userId");
+        if(session.getAttribute(SessionAttributes.ATTRIBUTE_USER_ROLE) == Role.ADMIN){
+            id = (Integer) session.getAttribute(SessionAttributes.ATTRIBUTE_USER_ID);
+        } else if(session.getAttribute(SessionAttributes.ATTRIBUTE_USER_ROLE) == Role.USER){
+            id = (Integer) session.getAttribute(SessionAttributes.ATTRIBUTE_USER_ID);
         }
+        session.setAttribute(SessionAttributes.PAGE, "Controller?command=gotomainpage");
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
         requestDispatcher.forward(request, response);

@@ -20,14 +20,19 @@
     <url-pattern>/Controller</url-pattern>
   </servlet-mapping>
 
+  <session-config>
+    <session-timeout>10</session-timeout>
+  </session-config>
+
   <servlet>
     <servlet-name>Registration</servlet-name>
     <jsp-file>/WEB-INF/jsp/registration.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Registration</servlet-name>
-    <url-pattern>/Registration</url-pattern>
+    <url-pattern>/registration</url-pattern>
   </servlet-mapping>
+
 
   <filter>
     <display-name>RequestLoggingFilter</display-name>
@@ -62,6 +67,15 @@
   <listener>
     <listener-class>by.jwd.restaurant.controller.listener.ContextListener</listener-class>
   </listener>
+
+  <jsp-config>
+
+    <taglib>
+      <taglib-uri>time</taglib-uri>
+      <taglib-location>/tld/time.tld</taglib-location>
+    </taglib>
+
+  </jsp-config>
 
 </web-app>
 
