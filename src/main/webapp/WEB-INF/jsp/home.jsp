@@ -36,7 +36,7 @@
 						</span>
 
                         <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-                            Karpinka
+                            Zhuy s Toboy
                         </h2>
 
                         <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
@@ -55,7 +55,7 @@
 						</span>
 
                         <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
-                            Karpinka
+                            Zhuy s Toboy
                         </h2>
 
                         <div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
@@ -74,7 +74,7 @@
 						</span>
 
                         <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
-                            KARPINKA
+                            ZHUY S TOBOY
                         </h2>
 
                         <div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
@@ -134,7 +134,7 @@
 			</span>
 
             <h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
-                Karpinka
+                Zhuy s Toboy
             </h3>
         </div>
 

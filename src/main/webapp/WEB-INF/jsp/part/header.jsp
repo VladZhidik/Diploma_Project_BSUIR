@@ -60,7 +60,7 @@
                 <!-- Logo -->
                 <div class="logo">
                     <a href="Controller?command=gotohomepage">
-                        <img src="${pageContext.request.contextPath}/static/img/icons/logo5.png" alt="IMG-LOGO" data-logofixed="${pageContext.request.contextPath}/static/img/icons/logo2.png"/>
+                        <img src="${pageContext.request.contextPath}/static/img/icons/logo5.png" alt="IMG-LOGO" data-logofixed="${pageContext.request.contextPath}/static/img/icons/logo5.png"/>
                     </a>
                 </div>
 

@@ -38,6 +38,10 @@
     <display-name>RequestLoggingFilter</display-name>
     <filter-name>RequestLoggingFilter</filter-name>
     <filter-class>by.jwd.restaurant.controller.filter.RequestLoggingFilter</filter-class>
+    <init-param>
+      <param-name>characterEncoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
   </filter>
 
   <filter>

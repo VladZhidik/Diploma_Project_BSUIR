@@ -28,17 +28,17 @@
                 <ul class="m-b-70">
                     <li class="txt14 m-b-14">
                         <i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
-                        3rd floor, 379 Alesha St, Hrodno, Hr 230300
+                        2rd floor, 3-2 Independence Avenue, Minsk, 220030
                     </li>
 
                     <li class="txt14 m-b-14">
                         <i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
-                        +375-(29)-666-33-69
+                        +375-(33)-328-02-95
                     </li>
 
                     <li class="txt14 m-b-14">
                         <i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-                        karpeychyk@mail.ru
+                       kurs972302@mail.ru
                     </li>
                 </ul>
 
@@ -66,7 +66,7 @@
                     </p>
 
                     <span class="txt16">
-							    5 ${may} 2021
+							    1 ${may} 2022
 					</span>
                 </div>
             </div>
@@ -99,11 +99,11 @@
 
                 <div class="p-t-5 p-b-5">
                     <a href="https://www.tripadvisor.ru/" class="fs-25 c-white"><i class="fa fa-tripadvisor m-l-18 " aria-hidden="true"></i></a>
-                    <a href="https://www.instagram.com/day_dreame1r/" class="fs-25 c-white"><i class="fa fa-facebook m-l-18 " aria-hidden="true"></i></a>
-                    <a href="https://www.instagram.com/s.h.e.p.e.l.e.v.i.c.h/" class="fs-25 c-white"><i class="fa fa-twitter m-l-18 " aria-hidden="true"></i></a>
-                    <a href="https://vk.com/nonchromist" class="fs-25 c-white"><i class="fa fa-linkedin m-l-18 " aria-hidden="true"></i></a>
-                    <a href="https://vk.com/idday_dreame1r" class="fs-25 c-white"><i class="fa fa-google-plus m-l-18 " aria-hidden="true"></i></a>
-                    <a href="https://www.instagram.com/s.h.e.p.e.l.e.v.i.c.h/" class="fs-25 c-white"><i class="fa fa-instagram m-l-18 " aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/seryj_lis_x/" class="fs-25 c-white"><i class="fa fa-facebook m-l-18 " aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/astapenko_boris/" class="fs-25 c-white"><i class="fa fa-twitter m-l-18 " aria-hidden="true"></i></a>
+                    <a href="https://vk.com/commissarx" class="fs-25 c-white"><i class="fa fa-linkedin m-l-18 " aria-hidden="true"></i></a>
+                    <a href="https://vk.com/id330296001" class="fs-25 c-white"><i class="fa fa-google-plus m-l-18 " aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/astapenko_boris/" class="fs-25 c-white"><i class="fa fa-instagram m-l-18 " aria-hidden="true"></i></a>
 
                 </div>
 
@@ -115,7 +115,7 @@
 
 
                 <div class="txt17 p-r-20 p-t-5 p-b-5">
-                    Copyright &copy; 2021 All rights reserved  |  This app is made with <i class="fa fa-heart"></i> by <a href="https://vk.com/idday_dreame1r" target="_blank">Alex</a> & <a href="https://vk.com/nonchromist" target="_blank">Maks</a>
+                    Copyright &copy; 2021 All rights reserved  |  This app is made with <i class="fa fa-heart"></i> by <a href="https://vk.com/commissarx" target="_blank">Vladislav</a> & <a href="https://vk.com/id330296001" target="_blank">Boris</a>
                 </div>
             </div>
         </div>
