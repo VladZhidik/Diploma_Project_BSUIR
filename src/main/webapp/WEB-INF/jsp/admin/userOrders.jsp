@@ -9,10 +9,12 @@
     <fmt:setBundle basename="locale" var="loc" />
     <fmt:message bundle="${loc}" key="userorders.lable" var="userorders"/>
     <fmt:message bundle="${loc}" key="userorders.lable.userid" var="userid"/>
+    <fmt:message bundle="${loc}" key="userorders.lable.username" var="userName"/>
     <fmt:message bundle="${loc}" key="userorders.lable.time" var="time"/>
     <fmt:message bundle="${loc}" key="userorders.lable.dishes" var="dishes"/>
     <fmt:message bundle="${loc}" key="userorders.lable.price" var="price"/>
     <fmt:message bundle="${loc}" key="currency.byn" var="byn"/>
+    <fmt:message bundle="${loc}" key="userorders.button.downloadOrders" var="downloadOrders"/>
 </head>
 <body>
 <jsp:include page="../part/header.jsp"/>
@@ -33,6 +35,7 @@
                     <tr>
                         <td>${userid}</td>
                         <td>${time}</td>
+                        <td>${userName}</td>
                         <td>${dishes}</td>
                         <td>${price}</td>
                     </tr>
@@ -55,8 +58,14 @@
                     </c:forEach>
 
                 </table>
-
         </div>
+        <hr><hr>
+        <button>
+            <a href="Controller?command=downloadOrders" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                ${downloadOrders}
+            </a>
+        </button>
+        <hr><hr>
     </div>
 
 </section>
