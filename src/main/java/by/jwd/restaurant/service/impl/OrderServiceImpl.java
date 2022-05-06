@@ -5,12 +5,20 @@ import by.jwd.restaurant.dao.OrderDAO;
 import by.jwd.restaurant.dao.exception.DAOException;
 import by.jwd.restaurant.entity.Dish;
 import by.jwd.restaurant.entity.Order;
+import by.jwd.restaurant.service.CsvWriter;
 import by.jwd.restaurant.service.OrderService;
 import by.jwd.restaurant.service.exception.ServiceException;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.*;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
+
+    private final CsvWriter csvWriter = new CsvWriterImpl();
+
     @Override
     public boolean makeOrder(Order order) throws ServiceException {
         DAOProvider provider = DAOProvider.getInstance();
@@ -130,6 +138,46 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return orders;
+    }
+
+    @Override
+    public void createCSVFile(HttpServletResponse response, HttpSession session) {
+        String filePath = "/Users/artsiom/IdeaProjects/Kursovay/src/main/resources/ordersreports/orders-reports.csv";
+        File downloadFile = new File(filePath);
+        ServletContext context = session.getServletContext();
+        try (FileInputStream inStream = new FileInputStream(downloadFile);
+             OutputStream outputStream = response.getOutputStream()){
+            csvWriter.writeCsv();
+
+            String mimeType = context.getMimeType(filePath);
+            if (mimeType == null) {
+                mimeType = "application/octet-stream";
+            }
+
+            response.setContentType(mimeType);
+            response.setContentLength((int) downloadFile.length());
+
+            //force download
+            String headerKey = "Content-Disposition";
+            String headerValue = String.format("attachment; filename=\"%s\"", downloadFile.getName());
+            response.setHeader(headerKey, headerValue);
+
+            byte[] buffer = new byte[4096];
+            int bytesRead = -1;
+
+            while ((bytesRead = inStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+
+        } catch (ServiceException e) {
+            System.out.println("Error writing csv file");
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error sending file");
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

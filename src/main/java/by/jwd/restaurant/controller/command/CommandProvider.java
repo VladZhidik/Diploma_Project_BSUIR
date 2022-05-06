@@ -41,6 +41,7 @@ public class CommandProvider {
         commands.put(CommandName.GOTOPASSWORDRECOVERYPAGE, new GoToPasswordRecoveryPage());
         commands.put(CommandName.PASSWORDRECOVERY, new PasswordRecovery());
         commands.put(CommandName.GOTOPERSONALACCOUNTPAGE, new GoToPersonalAccountPage());
+        commands.put(CommandName.DOWNLOADORDERS, new DownloadOrders());
     }
 
     public Command takeCommand(String name){

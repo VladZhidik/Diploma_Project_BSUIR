@@ -4,6 +4,8 @@ import by.jwd.restaurant.entity.Dish;
 import by.jwd.restaurant.entity.Order;
 import by.jwd.restaurant.service.exception.ServiceException;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface OrderService {
@@ -16,4 +18,5 @@ public interface OrderService {
     void checkOrderStatus() throws ServiceException;
     Double getTotalPrice(List<Dish> dishList) throws ServiceException;
     List<Order> getUserOrders(Integer userId) throws ServiceException;
+    void createCSVFile(HttpServletResponse response, HttpSession session);
 }

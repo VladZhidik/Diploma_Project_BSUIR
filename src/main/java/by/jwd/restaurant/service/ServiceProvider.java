@@ -17,6 +17,8 @@ public final class ServiceProvider {
 
     private final DrinkService drinkService = new DrinkServiceImpl();
 
+    private final CsvWriter CsvWriter = new CsvWriterImpl();
+
     public static ServiceProvider getInstance() {
         return instance;
     }
@@ -39,5 +41,9 @@ public final class ServiceProvider {
 
     public DrinkService getDrinkService() {
         return drinkService;
+    }
+
+    public CsvWriter getCsvWriter() {
+        return CsvWriter;
     }
 }
