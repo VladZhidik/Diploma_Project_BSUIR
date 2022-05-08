@@ -26,10 +26,21 @@ public class GoToAllUserOrdersPage implements Command {
 
         List<Order> orders = orderService.getAllOrders();
 
+        double entireCost = 0;
+        double amount = 0;
+        for (Order order : orders) {
+            if (order.getTotalPrice() != 0) {
+                entireCost += order.getTotalPrice();
+                amount++;
+            }
+        }
+        double averageCheck = entireCost / amount;
+
         Date today = new Date();
 
         request.setAttribute(SessionAttributes.ATTRIBUTE_ORDERS, orders);
         request.setAttribute(SessionAttributes.ATTRIBUTE_TODAY, today);
+        request.setAttribute(SessionAttributes.ATTRIBUTE_AVERAGE_CHECK, averageCheck);
 
         session.setAttribute(SessionAttributes.PAGE, "Controller?command=gotoalluserorderspage");
 

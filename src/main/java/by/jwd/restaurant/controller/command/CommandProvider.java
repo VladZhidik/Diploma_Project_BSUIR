@@ -42,6 +42,10 @@ public class CommandProvider {
         commands.put(CommandName.PASSWORDRECOVERY, new PasswordRecovery());
         commands.put(CommandName.GOTOPERSONALACCOUNTPAGE, new GoToPersonalAccountPage());
         commands.put(CommandName.DOWNLOADORDERS, new DownloadOrders());
+        commands.put(CommandName.GOTOUSERSPAGE, new GoToUsersPage());
+        commands.put(CommandName.BANADMIN, new BanAdmin());
+        commands.put(CommandName.BANUSER, new BanUser());
+        commands.put(CommandName.APPOINTADMIN, new AppointAdmin());
     }
 
     public Command takeCommand(String name){

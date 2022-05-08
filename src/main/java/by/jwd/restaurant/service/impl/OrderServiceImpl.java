@@ -2,6 +2,7 @@ package by.jwd.restaurant.service.impl;
 
 import by.jwd.restaurant.dao.DAOProvider;
 import by.jwd.restaurant.dao.OrderDAO;
+import by.jwd.restaurant.dao.connection.DBResourceManager;
 import by.jwd.restaurant.dao.exception.DAOException;
 import by.jwd.restaurant.entity.Dish;
 import by.jwd.restaurant.entity.Order;
@@ -142,12 +143,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void createCSVFile(HttpServletResponse response, HttpSession session) {
-        String filePath = "/Users/artsiom/IdeaProjects/Kursovay/src/main/resources/ordersreports/orders-reports.csv";
+        DBResourceManager dbResourceManager = DBResourceManager.getInstance();
+        String filePath = dbResourceManager.getValue("file.location");
         File downloadFile = new File(filePath);
         ServletContext context = session.getServletContext();
         try (FileInputStream inStream = new FileInputStream(downloadFile);
              OutputStream outputStream = response.getOutputStream()){
-            csvWriter.writeCsv();
+            csvWriter.writeCsv(filePath);
 
             String mimeType = context.getMimeType(filePath);
             if (mimeType == null) {
