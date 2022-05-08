@@ -16,10 +16,10 @@ import java.util.List;
 public class CsvWriterImpl implements CsvWriter {
 
     @Override
-    public void writeCsv() throws ServiceException {
+    public void writeCsv(String filePath) throws ServiceException {
         List<String[]> csvDate = createCsvData();
 
-        try (CSVWriter writer = new CSVWriter(new FileWriter("/Users/artsiom/IdeaProjects/Kursovay/src/main/resources/ordersreports/orders-reports.csv"))) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(filePath))) {
             writer.writeAll(csvDate);
         } catch (IOException e) {
             e.printStackTrace();

@@ -9,6 +9,8 @@ import by.jwd.restaurant.entity.User;
 import by.jwd.restaurant.dao.exception.DAOException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLUserDAO implements UserDAO {
     private static final String COLUMN_LABEL_USER_ID = "user_id";
@@ -24,6 +26,10 @@ public class SQLUserDAO implements UserDAO {
     private static final String INSERT_REGISTRATION_USER = "INSERT INTO users (user_name, user_surname, user_phone, user_email, user_password, role_id) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String SELECT_USER_PASSWORD = "SELECT user_password FROM users WHERE user_email = ?";
     private static final String SELECT_USER = "SELECT users.user_id, users.user_name, users.user_surname, users.user_phone, users.user_email, users.user_password, role_name FROM users JOIN roles ON users.role_id=roles.role_id WHERE user_email = ?";
+    private static final String SELECT_ALL_USER = "SELECT users.user_id, users.user_name, users.user_surname, users.user_phone, users.user_email, users.user_password, role_name FROM users JOIN roles ON users.role_id=roles.role_id ";
+    private static final String DELETE_USER = "DELETE from users WHERE user_email = ?";
+    private static final String UPDATE_USER_ROLE = "UPDATE users SET role_id=? WHERE user_email=?";
+
 
     static {
         MySQLDriverLoader.getInstance();
@@ -195,5 +201,124 @@ public class SQLUserDAO implements UserDAO {
         }
 
         return user;
+    }
+
+    @Override
+    public List<User> findAll() throws DAOException {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = null;
+
+        PreparedStatement prSt = null;
+        ResultSet resSet;
+
+        List<User> users = new ArrayList<>();
+
+        try {
+            connection = connectionPool.takeConnection();
+            prSt = connection.prepareStatement(SELECT_ALL_USER);
+
+            resSet = prSt.executeQuery();
+            while (resSet.next()) {
+               users.add(new User(resSet.getInt(COLUMN_LABEL_USER_ID),
+                resSet.getString(COLUMN_LABEL_USER_NAME),
+                resSet.getString(COLUMN_LABEL_USER_SURNAME),
+                resSet.getString(COLUMN_LABEL_USER_PHONE),
+                resSet.getString(COLUMN_LABEL_USER_EMAIL),
+                resSet.getString(COLUMN_LABEL_USER_PASSWORD),
+                Role.valueOf(resSet.getString(COLUMN_LABEL_USER_ROLE))));
+            }
+        } catch (SQLException | ConnectionPoolException e) {
+            throw new DAOException(e);
+        } finally {
+            try {
+                connectionPool.closeConnection(connection, prSt);
+            }catch (ConnectionPoolException e){
+                throw new DAOException(e);
+            }
+        }
+        return users;
+    }
+
+    @Override
+    public boolean banUser(String userEmail) throws DAOException {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = null;
+        PreparedStatement prSt = null;
+        ResultSet resSet;
+        boolean result = false;
+        try {
+            connection = connectionPool.takeConnection();
+            prSt = connection.prepareStatement(DELETE_USER);
+            prSt.setString(1, userEmail);
+
+            prSt.executeUpdate();
+            connection.commit();
+            result = true;
+        } catch (SQLException | ConnectionPoolException e) {
+            throw new DAOException(e);
+        } finally {
+            try {
+                connectionPool.closeConnection(connection, prSt);
+                return result;
+            }catch (ConnectionPoolException e){
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
+    public boolean banAdmin(String userEmail) throws DAOException {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = null;
+        PreparedStatement prSt = null;
+        ResultSet resSet;
+        boolean result = false;
+        try {
+            connection = connectionPool.takeConnection();
+            prSt = connection.prepareStatement(UPDATE_USER_ROLE);
+            prSt.setInt(1, 2);
+            prSt.setString(2, userEmail);
+
+            prSt.executeUpdate();
+            connection.commit();
+            result = true;
+        } catch (SQLException | ConnectionPoolException e) {
+            throw new DAOException(e);
+        } finally {
+            try {
+                connectionPool.closeConnection(connection, prSt);
+                return result;
+            }catch (ConnectionPoolException e){
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
+    public boolean appointToAdmin(String userEmail) throws DAOException {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = null;
+        PreparedStatement prSt = null;
+        ResultSet resSet;
+        boolean result = false;
+        try {
+            connection = connectionPool.takeConnection();
+            prSt = connection.prepareStatement(UPDATE_USER_ROLE);
+            prSt.setInt(1, 1);
+            prSt.setString(2, userEmail);
+
+            prSt.executeUpdate();
+            connection.commit();
+            result = true;
+        } catch (SQLException | ConnectionPoolException e) {
+            throw new DAOException(e);
+        } finally {
+            try {
+                connectionPool.closeConnection(connection, prSt);
+                return result;
+            }catch (ConnectionPoolException e){
+                throw new DAOException(e);
+            }
+        }
     }
 }

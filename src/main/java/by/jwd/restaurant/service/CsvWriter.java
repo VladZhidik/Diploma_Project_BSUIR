@@ -4,6 +4,6 @@ import by.jwd.restaurant.service.exception.ServiceException;
 
 public interface CsvWriter {
 
-    void writeCsv() throws ServiceException;
+    void writeCsv(String filePath) throws ServiceException;
 
 }

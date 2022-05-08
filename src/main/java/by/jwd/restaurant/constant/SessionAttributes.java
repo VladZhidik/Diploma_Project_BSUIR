@@ -8,6 +8,8 @@ public final class SessionAttributes {
     public static final String ATTRIBUTE_DISH = "dish";
     public static final String ATTRIBUTE_ORDERED_DISHES = "orderedDishes";
     public static final String ATTRIBUTE_TOTAL_PRICE = "totalPrice";
+    public static final String ATTRIBUTE_AVERAGE_CHECK = "averageCheck";
+    public static final String ATTRIBUTE_USERS ="users";
     public static final String ATTRIBUTE_DISHES = "dishes";
     public static final String ATTRIBUTE_ORDERS = "orders";
     public static final String ATTRIBUTE_DISH_TITLES = "dishTitles";

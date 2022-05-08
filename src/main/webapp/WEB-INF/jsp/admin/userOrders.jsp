@@ -15,6 +15,7 @@
     <fmt:message bundle="${loc}" key="userorders.lable.price" var="price"/>
     <fmt:message bundle="${loc}" key="currency.byn" var="byn"/>
     <fmt:message bundle="${loc}" key="userorders.button.downloadOrders" var="downloadOrders"/>
+    <fmt:message bundle="${loc}" key="userorders.lable.averageCheck" var="averageCheck"/>
 </head>
 <body>
 <jsp:include page="../part/header.jsp"/>
@@ -65,7 +66,11 @@
                 ${downloadOrders}
             </a>
         </button>
-        <hr><hr>
+        <hr><hr><hr>
+        <p>
+            ${averageCheck}: ${requestScope.averageCheck}
+        </p>
+        <hr><hr><hr>
     </div>
 
 </section>

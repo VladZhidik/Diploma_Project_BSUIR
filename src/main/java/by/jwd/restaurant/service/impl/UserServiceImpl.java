@@ -9,6 +9,8 @@ import by.jwd.restaurant.service.exception.ServiceException;
 import by.jwd.restaurant.service.UserService;
 import by.jwd.restaurant.service.validation.UserValidator;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
     private static final int USER_ROLE_ID = 2;
 
@@ -86,6 +88,62 @@ public class UserServiceImpl implements UserService {
         }
 
         return user;
+    }
+
+    @Override
+    public List<User> findAll() throws ServiceException {
+        List<User> users;
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+
+        try {
+            users = userDAO.findAll();
+        } catch (DAOException e) {
+            throw new ServiceException("users findALl exception", e);
+        }
+        return users;
+    }
+
+    @Override
+    public void banUser(String userEmail) throws ServiceException {
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+
+        try {
+           if(userDAO.banUser(userEmail)) {
+               System.out.println("User is banned");
+           }
+        } catch (DAOException e) {
+            throw new ServiceException("Error during banning user", e);
+        }
+    }
+
+    @Override
+    public void banAdmin(String userEmail) throws ServiceException {
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+
+        try {
+            if(userDAO.banAdmin(userEmail)){
+                System.out.println("Admin is banned and as user");
+            }
+        } catch (DAOException e) {
+            throw new ServiceException("Error during banning admin", e);
+        }
+    }
+
+    @Override
+    public void appointToAdmin(String userEmail) throws ServiceException {
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+
+        try {
+            if(userDAO.appointToAdmin(userEmail)) {
+                System.out.println("User is assigned as an admin");
+            }
+        } catch (DAOException e) {
+            throw new ServiceException("Error during banning appoint to admin", e);
+        }
     }
 
     private boolean freeLogin(String login) throws ServiceException {

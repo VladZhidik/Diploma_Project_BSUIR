@@ -19,6 +19,7 @@
     <fmt:message bundle="${loc}" key="main.lable.makeOrder" var="makeOrder"/>
     <fmt:message bundle="${loc}" key="main.lable.viewOrders" var="viewOrders"/>
     <fmt:message bundle="${loc}" key="main.lable.personalaccount" var="personalaccount"/>
+    <fmt:message bundle="${loc}" key="main.lable.userList" var="userList"/>
 </head>
 <body>
 
@@ -43,6 +44,7 @@
             <a href="Controller?command=gotomenupage" class="txt4">${viewingDishes}</a><br/>
             <a href="Controller?command=gotoadddishpage" class="txt4">${addDish}</a><br /><br />
             <a href="Controller?command=gotoalluserorderspage" class="txt4">${viewOrders}</a><br /><br/>
+            <a href="Controller?command=gotouserspage" class="txt4">${userList}</a><br /><br/>
         </form>
             <br/>
         </c:if>
