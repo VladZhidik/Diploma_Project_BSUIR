@@ -134,6 +134,17 @@
         <c:if test="${sessionScope.userRole != 'ADMIN'}">
             <div class="row p-t-60 p-b-70">
                 <div class="col-md-8 col-lg-6 m-l-r-auto">
+
+                    <br><br>
+                    <form id="dishoftheday" action="Controller" method="post">
+                        <input type="hidden" name="command" value="dishoftheday"/>
+                    </form>
+                    <button form="dishoftheday" class="btn btn-success delete2" type="submit"
+                             name="dishoftheday">
+                        <fmt:message bundle="${loc}" key="menu.button.dishoftheday"/>
+                    </button>
+                    <br><br>
+
                     <c:forEach items="${requestScope.dishes}" var="dishes">
                         <c:if test="${dishes.available == true}">
                             <form id="addToOrder" action="Controller" method="post">

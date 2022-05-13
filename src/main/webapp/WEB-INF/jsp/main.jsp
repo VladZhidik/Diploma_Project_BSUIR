@@ -20,6 +20,7 @@
     <fmt:message bundle="${loc}" key="main.lable.viewOrders" var="viewOrders"/>
     <fmt:message bundle="${loc}" key="main.lable.personalaccount" var="personalaccount"/>
     <fmt:message bundle="${loc}" key="main.lable.userList" var="userList"/>
+    <fmt:message bundle="${loc}" key="main.lable.rating" var="rating"/>
 </head>
 <body>
 
@@ -57,6 +58,19 @@
             </form>
         </c:if>
     </div>
+
+    <br><br>
+    <form action="Controller" method="post">
+        <input type="hidden" name="command" value="setRating"/>
+        <label>
+            ${rating}
+            <input type="number" name="rating"
+                   min="0" max="10" pattern="\d [0-9]">
+        </label>
+        <button  class="btn btn-success delete2" type="submit">
+        </button>
+    </form>
+    <br><br>
 </section>
 
 <jsp:include page="part/footer.jsp"/>

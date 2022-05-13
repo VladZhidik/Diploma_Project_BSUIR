@@ -14,6 +14,25 @@
     <fmt:message bundle="${loc}" key="makeorder.lable.date" var="date"/>
     <fmt:message bundle="${loc}" key="makeorder.lable.totalPrice" var="totalPrice"/>
     <fmt:message bundle="${loc}" key="currency.byn" var="byn"/>
+
+    <script type="text/javascript" src="include/js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tables").change(function () {
+                $.getJSON("option", {index: $(this).val()}, function (myJSON) {
+                    var myOptions = "";
+                    for (var i = 0; i < myJSON.length; i++) {
+                        myOptions += '<option value="' + myJSON[i].optionValue + '">' + myJSON[i].optionDisplay +
+                            '</option>';
+                    }
+                    $("#area").empty();
+                    $("#area").html(myOptions);
+                });
+            });
+            $("#city").change();
+        })
+    </script>
+
 </head>
 <body>
 <jsp:include page="../part/header.jsp"/>
@@ -65,17 +84,41 @@
 
             <!-- Date -->
             <span class="txt9">
-									${date}
-								</span>
+                ${date}
+            </span>
+
+            <select id="tables">
+                <c:forEach items="${requestScope.tables}" var="table">
+                    <option value="1"> Пекин</option>
+                </c:forEach>
+            </select>
 
             <div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
                 <input class="bo-rad-10 sizefull txt10 p-l-20" type="datetime-local" name="date">
 
             </div>
             <span class="txt22 m-t-20">
+                <form id="discountForPensioners" action="Controller" method="post">
+                    <input type="hidden" name="command" value="discountForPensioners"/>
+                </form>
+                <button form="discountForPensioners" class="btn btn-success delete2" type="submit"
+                        value="0.6" name="discountForPensioners">
+                    <fmt:message bundle="${loc}" key="makeorder.button.discountForPensioners"/>
+                </button>
+                <br><br>
+                <form id="actionChewTuesday" action="Controller" method="post">
+                    <input type="hidden" name="command" value="actionChewTuesday"/>
+                </form>
+                <button form="actionChewTuesday" class="btn btn-success delete2" type="submit"
+                        value="0.7" name="actionChewTuesday">
+                    <fmt:message bundle="${loc}" key="makeorder.button.actionChewTuesday"/>
+                </button>
+                <br><br>
+    </span>
+            <p></p>
+            <span class="txt22 m-t-20">
         ${totalPrice}
-                <c:out value="${sessionScope.totalPrice}" /> ${byn}
-
+                <c:out value="${sessionScope.totalPrice}"/> ${byn}
     </span>
             <br/>
             <button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4">${makeorderButton}</button>

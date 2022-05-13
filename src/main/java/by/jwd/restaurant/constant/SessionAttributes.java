@@ -39,6 +39,8 @@ public final class SessionAttributes {
 
     public static final String INDEX_PAGE = "index.jsp";
 
+    public static final String ATTRIBUTE_DISCOUNT = "discount";
+
 
     private SessionAttributes() {
     }

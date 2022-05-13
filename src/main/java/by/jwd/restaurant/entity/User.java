@@ -11,6 +11,7 @@ public class  User implements Serializable {
     private String email;
     private String password;
     private Role role;
+    private String avatarPath;
 
     public User() {
     }
@@ -133,5 +134,13 @@ public class  User implements Serializable {
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 '}';
+    }
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
+
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
     }
 }

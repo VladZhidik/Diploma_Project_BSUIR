@@ -4,6 +4,8 @@ import by.jwd.restaurant.entity.RegistrationInfo;
 import by.jwd.restaurant.entity.User;
 import by.jwd.restaurant.service.exception.ServiceException;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.List;
 
 public interface UserService {
@@ -15,4 +17,6 @@ public interface UserService {
     void banUser(String userEmail) throws ServiceException;
     void banAdmin(String userEmail) throws ServiceException;
     void appointToAdmin(String userEmail) throws ServiceException;
+
+    void setAvatarPath(String email, String fileName);
 }

@@ -9,6 +9,8 @@ import by.jwd.restaurant.service.exception.ServiceException;
 import by.jwd.restaurant.service.UserService;
 import by.jwd.restaurant.service.validation.UserValidator;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -143,6 +145,17 @@ public class UserServiceImpl implements UserService {
             }
         } catch (DAOException e) {
             throw new ServiceException("Error during banning appoint to admin", e);
+        }
+    }
+
+    @Override
+    public void setAvatarPath(String email, String fileName) {
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+        try {
+            userDAO.uploadAvatarPath(email, fileName);
+        } catch (DAOException e) {
+            e.printStackTrace();
         }
     }
 

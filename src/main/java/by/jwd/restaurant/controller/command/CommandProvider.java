@@ -46,6 +46,10 @@ public class CommandProvider {
         commands.put(CommandName.BANADMIN, new BanAdmin());
         commands.put(CommandName.BANUSER, new BanUser());
         commands.put(CommandName.APPOINTADMIN, new AppointAdmin());
+        commands.put(CommandName.DISCOUNTFORPENSIONERS, new DiscountForPensioners());
+        commands.put(CommandName.ACTIONCHEWTUESDAY, new ActionChewTuesday());
+        commands.put(CommandName.UPLOADPHOTO, new UploadAvatar());
+        commands.put(CommandName.DISHOFTHEDAY, new GoToDishOfTheDayPage());
     }
 
     public Command takeCommand(String name){

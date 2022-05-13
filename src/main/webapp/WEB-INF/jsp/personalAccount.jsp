@@ -28,29 +28,51 @@
 <div class="row p-t-60 p-b-70">
     <div class="col-md-8 col-lg-6 m-l-r-auto">
 
-        <!-- Block3 -->
-        <div class="blo3 flex-w flex-col-l-sm m-b-30">
+        <div class="profile-content">
+            <div class="user-info">
+                <div class="avatar-info">
+                    <div class="avatar-container">
+                        <img class="avatar-image"
+                             src="${pageContext.request.contextPath}/static/avatars/${user.avatarPath}"/>
+                    </div>
+                    <div>
+                        <form action="Controller" method="post" enctype='multipart/form-data'>
+                            <input type="hidden" name="command" value="uploadPhoto"/>
+                            <%--<p><input type="file" name="photo" accept="image/jpeg,image/png">
+                                <input type="submit" name="command" value="uploadPhoto"></p>--%>
+                            <input type="file" name="photo" accept="image/*,image/jpeg"/>
+                                <button class="btn3 flex-c-m size13 txt11 trans-0-4" type="submit">
+                                    upload
+                                </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-            <div class="text-blo3 size22 flex-col-l-m">
+            <!-- Block3 -->
+            <div class="blo3 flex-w flex-col-l-sm m-b-30">
+
+                <div class="text-blo3 size22 flex-col-l-m">
                 <span class="txt22 m-t-20">
                     ${name}: ${requestScope.user.name}<br/>
                 </span>
 
-                <span class="txt22 m-t-20">
+                    <span class="txt22 m-t-20">
                    ${surname}: ${requestScope.user.surname}<br/>
                 </span>
 
-                <span class="txt22 m-t-20">
+                    <span class="txt22 m-t-20">
                    ${phone}: ${requestScope.user.phone}<br/>
                 </span>
 
-                <span class="txt22 m-t-20">
+                    <span class="txt22 m-t-20">
                    ${email}: ${requestScope.user.email}<br/>
                 </span>
 
-                <span class="txt22 m-t-20">
+                    <span class="txt22 m-t-20">
                    ${role}: ${requestScope.user.role}<br/>
                 </span>
+                </div>
             </div>
         </div>
     </div>

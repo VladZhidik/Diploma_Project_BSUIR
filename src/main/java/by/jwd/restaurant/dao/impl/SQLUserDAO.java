@@ -25,10 +25,12 @@ public class SQLUserDAO implements UserDAO {
     private static final String SELECT_USER_ID = "SELECT user_id FROM users WHERE user_email = ? ";
     private static final String INSERT_REGISTRATION_USER = "INSERT INTO users (user_name, user_surname, user_phone, user_email, user_password, role_id) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String SELECT_USER_PASSWORD = "SELECT user_password FROM users WHERE user_email = ?";
-    private static final String SELECT_USER = "SELECT users.user_id, users.user_name, users.user_surname, users.user_phone, users.user_email, users.user_password, role_name FROM users JOIN roles ON users.role_id=roles.role_id WHERE user_email = ?";
+    private static final String SELECT_USER = "SELECT users.user_id, users.user_name, users.user_surname, users.user_phone, users.user_email, users.user_password, users.user_picture_path, role_name FROM users JOIN roles ON users.role_id=roles.role_id WHERE user_email = ?";
     private static final String SELECT_ALL_USER = "SELECT users.user_id, users.user_name, users.user_surname, users.user_phone, users.user_email, users.user_password, role_name FROM users JOIN roles ON users.role_id=roles.role_id ";
     private static final String DELETE_USER = "DELETE from users WHERE user_email = ?";
     private static final String UPDATE_USER_ROLE = "UPDATE users SET role_id=? WHERE user_email=?";
+    public static final String USER_PICTURE_PATH = "user_picture_path";
+    public static final String UPDATE_USERS_SET_USER_PICTURE_PATH_WHERE_USER_EMAIL = "UPDATE users SET user_picture_path=? WHERE user_email=?";
 
 
     static {
@@ -188,7 +190,12 @@ public class SQLUserDAO implements UserDAO {
                 user.setEmail(resSet.getString(COLUMN_LABEL_USER_EMAIL));
                 user.setPassword(resSet.getString(COLUMN_LABEL_USER_PASSWORD));
                 user.setRole(Role.valueOf(resSet.getString(COLUMN_LABEL_USER_ROLE)));
-
+                String avatarPath = resSet.getString(USER_PICTURE_PATH);
+                if(avatarPath == null) {
+                    user.setAvatarPath("DefaultAvatar.jpg");
+                } else {
+                    user.setAvatarPath(avatarPath);
+                }
             }
         } catch (SQLException | ConnectionPoolException e) {
             throw new DAOException(e);
@@ -318,6 +325,29 @@ public class SQLUserDAO implements UserDAO {
                 return result;
             }catch (ConnectionPoolException e){
                 throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
+    public void uploadAvatarPath(String email, String fileName) throws DAOException {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = null;
+        PreparedStatement prSt = null;
+
+        try {
+            connection = connectionPool.takeConnection();
+            prSt = connection.prepareStatement(UPDATE_USERS_SET_USER_PICTURE_PATH_WHERE_USER_EMAIL);
+            prSt.setString(1, fileName);
+            prSt.setString(2, email);
+            prSt.executeUpdate();
+        } catch (SQLException | ConnectionPoolException e) {
+            throw new DAOException(e);
+        } finally {
+            try {
+                connectionPool.closeConnection(connection, prSt);
+            } catch (ConnectionPoolException e) {
+                e.printStackTrace();
             }
         }
     }

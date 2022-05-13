@@ -41,7 +41,14 @@ public class GoToMakeOrderPage implements Command {
             totalPrice = orderService.getTotalPrice(orderedDishes);
 
             request.setAttribute(SessionAttributes.ATTRIBUTE_ORDERED_DISHES, orderedDishes);
-
+            Object discount = session.getAttribute(SessionAttributes.ATTRIBUTE_DISCOUNT);
+            if(discount != null) {
+                if(discount instanceof String) {
+                    totalPrice *= Double.parseDouble((String) discount);
+                } else {
+                    totalPrice *= (Double) discount;
+                }
+            }
             session.setAttribute(SessionAttributes.ATTRIBUTE_TOTAL_PRICE, totalPrice);
             session.setAttribute(SessionAttributes.ATTRIBUTE_ORDER_ID, orderId);
 
