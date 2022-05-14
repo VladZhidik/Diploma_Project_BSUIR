@@ -3,7 +3,7 @@ package by.jwd.restaurant.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class  User implements Serializable {
+public class User implements Serializable {
     private Integer id;
     private String name;
     private String surname;
@@ -11,8 +11,28 @@ public class  User implements Serializable {
     private String email;
     private String password;
     private Role role;
+    private String avatarPath;
+    private String feedback;
+    private double rating;
 
     public User() {
+    }
+
+    public User(Integer id, String name,
+                String surname, String phone,
+                String email, String password,
+                Role role, String avatarPath,
+                String feedback, double rating) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.avatarPath = avatarPath;
+        this.feedback = feedback;
+        this.rating = rating;
     }
 
     public User(Integer id, String name, String surname, String phone, String email, String password, Role role) {
@@ -94,32 +114,42 @@ public class  User implements Serializable {
         this.role = role;
     }
 
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
+
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-
-        if (!id.equals(user.id)) return false;
-        if (!name.equals(user.name)) return false;
-        if (!surname.equals(user.surname)) return false;
-        if (!phone.equals(user.phone)) return false;
-        if (!email.equals(user.email)) return false;
-        if (!password.equals(user.password)) return false;
-        return role == user.role;
+        return Double.compare(user.rating, rating) == 0 && Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(phone, user.phone) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && role == user.role && Objects.equals(avatarPath, user.avatarPath) && Objects.equals(feedback, user.feedback);
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + surname.hashCode();
-        result = 31 * result + phone.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + password.hashCode();
-        result = 31 * result + role.hashCode();
-        return result;
+        return Objects.hash(id, name, surname, phone, email, password, role, avatarPath, feedback, rating);
     }
 
     @Override
@@ -132,6 +162,9 @@ public class  User implements Serializable {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
+                ", avatarPath='" + avatarPath + '\'' +
+                ", feedback='" + feedback + '\'' +
+                ", rating=" + rating +
                 '}';
     }
 }

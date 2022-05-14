@@ -146,6 +146,59 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public void setAvatarPath(String email, String fileName) {
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+        try {
+            userDAO.uploadAvatarPath(email, fileName);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void setRating(Double rating, String email) {
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+        try {
+            userDAO.setRating(rating, email);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Double recalculateRating() throws ServiceException {
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+        try {
+            List<Double> allUsersRating = userDAO.getAllUsersRating();
+            double allValue = 0.0;
+            double size = 0;
+            for (Double rating : allUsersRating) {
+                if (rating > 0) {
+                    allValue += rating;
+                    size++;
+                }
+            }
+            return allValue / size;
+        } catch (DAOException e) {
+            throw new ServiceException("Error in recalculating rating", e);
+        }
+    }
+
+    @Override
+    public void leftUserFeedback(String userEmail, String feedback) throws ServiceException {
+        DAOProvider provider = DAOProvider.getInstance();
+        UserDAO userDAO = provider.getUserDAO();
+        try{
+            userDAO.setUserFeedback(userEmail, feedback);
+        } catch (DAOException e) {
+           throw new ServiceException("Error in set user feedback", e);
+        }
+    }
+
     private boolean freeLogin(String login) throws ServiceException {
         DAOProvider provider = DAOProvider.getInstance();
         UserDAO userDAO = provider.getUserDAO();

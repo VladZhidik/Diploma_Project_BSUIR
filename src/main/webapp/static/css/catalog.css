@@ -3,6 +3,95 @@
     margin: auto;
     width: 80%;
 }
+.profile-content {
+    min-width: 100%;
+    padding: 10px 100px 10px;
+}
+
+.page-content {
+    display: flex;
+    justify-content: center;
+}
+
+.user-profile-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.user-info {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 10px;
+    float: left;
+    width: 80%;
+    margin-right: 2%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.user-info-feedback {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 10px;
+    float: left;
+    width: 80%;
+    margin-right: 2%;
+    height: 100px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.avatar-image {
+    height: 150px;
+    z-index: inherit;
+}
+
+.avatar-image-feedback {
+    height: 50px;
+    z-index: inherit;
+}
+
+.avatar-info {
+    position: relative;
+}
+
+.avatar-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.avatar-container-feedback {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.avatar-image {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    margin: auto;
+    height: 300px;
+}
+
+.avatar-image-feedback {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    margin: auto;
+    height: 100px;
+}
 
 #product{
     width: 300px;

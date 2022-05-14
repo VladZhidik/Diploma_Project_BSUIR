@@ -15,4 +15,10 @@ public interface UserService {
     void banUser(String userEmail) throws ServiceException;
     void banAdmin(String userEmail) throws ServiceException;
     void appointToAdmin(String userEmail) throws ServiceException;
+
+    void setAvatarPath(String email, String fileName);
+
+    void setRating(Double rating, String userEmail);
+    Double recalculateRating() throws ServiceException;
+    void leftUserFeedback(String userEmail, String feedback) throws ServiceException;
 }

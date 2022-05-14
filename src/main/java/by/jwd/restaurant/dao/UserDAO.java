@@ -16,4 +16,12 @@ public interface UserDAO {
     boolean banUser(String userEmail) throws DAOException;
     boolean banAdmin(String userEmail) throws DAOException;
     boolean appointToAdmin(String userEmail) throws DAOException;
+
+    void uploadAvatarPath(String email, String fileName) throws DAOException;
+
+    void setRating(Double rating, String email) throws DAOException;
+
+    List<Double> getAllUsersRating() throws DAOException;
+
+    void setUserFeedback(String userEmail, String feedback) throws DAOException;
 }

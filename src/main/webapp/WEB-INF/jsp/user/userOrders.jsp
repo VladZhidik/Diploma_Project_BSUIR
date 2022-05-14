@@ -28,26 +28,26 @@
 
             <div class="col-md-8 col-lg-6 m-l-r-auto">
 
-                <c:forEach items="${requestScope.orders}" var="orders">
+                <c:forEach items="${requestScope.orders}" var="order">
 
-                    <c:if test="${orders.time >= requestScope.today}">
+                    <c:if test="${order.dishes != null}">
                     <!-- Block3 -->
 
                        <div class="blo3 flex-w flex-col-l-sm m-b-30">
 
                         <div class="text-blo3 size21 flex-col-l-m">
                             <a href="#" class="txt21 m-b-3">
-                                    ${orders.time}
+                                    ${order.time}
                             </a>
 
                             <span class="txt22">
-                            <c:forEach items="${orders.dishes}" var="dish">
+                            <c:forEach items="${order.dishes}" var="dish">
                                 ${dish.title} - ${dish.price} ${byn} <br/>
                             </c:forEach>
                             </span>
 
                             <span class="txt22 m-t-20">
-                                    ${orders.totalPrice} ${byn}
+                                    ${order.totalPrice} ${byn}
 							    </span>
                                 <br/><br/>
                         </div>
