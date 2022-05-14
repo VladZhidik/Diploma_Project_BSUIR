@@ -41,9 +41,9 @@
                             <%--<p><input type="file" name="photo" accept="image/jpeg,image/png">
                                 <input type="submit" name="command" value="uploadPhoto"></p>--%>
                             <input type="file" name="photo" accept="image/*,image/jpeg"/>
-                                <button class="btn3 flex-c-m size13 txt11 trans-0-4" type="submit">
-                                    upload
-                                </button>
+                            <button class="btn3 flex-c-m size13 txt11 trans-0-4" type="submit">
+                                upload
+                            </button>
                         </form>
                     </div>
                 </div>

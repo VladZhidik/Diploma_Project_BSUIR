@@ -12,6 +12,7 @@
     <fmt:message bundle="${loc}" key="gallery.food" var="food"/>
     <fmt:message bundle="${loc}" key="gallery.events" var="events"/>
     <fmt:message bundle="${loc}" key="gallery.vipguests" var="vipguests"/>
+
 </head>
 <body class="animsition">
 <jsp:include page="part/header.jsp"/>

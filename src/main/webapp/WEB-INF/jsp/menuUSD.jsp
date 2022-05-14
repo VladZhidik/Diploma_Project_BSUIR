@@ -13,12 +13,12 @@
     <fmt:message bundle="${loc}" key="menu.alphabetically" var="alphabetically"/>
     <fmt:message bundle="${loc}" key="menu.price" var="price"/>
     <fmt:message bundle="${loc}" key="makeorder.lable.calorieContent" var="calorieContent"/>
-    <fmt:message bundle="${loc}" key="currency.byn" var="byn"/>
+    <fmt:message bundle="${loc}" key="currency.usd" var="byn"/>
     <fmt:message bundle="${loc}" key="menu.notavailable" var="notavailable"/>
     <fmt:message bundle="${loc}" key="menu.update" var="update"/>
     <fmt:message bundle="${loc}" key="menu.delete" var="delete"/>
     <fmt:message bundle="${loc}" key="menu.toorder" var="toorder"/>
-    <fmt:message bundle="${loc}" key="menu.button.inUSD" var="showPricesInDollars"/>
+    <fmt:message bundle="${loc}" key="menu.button.inbyn" var="showPricesInByn"/>
 </head>
 <body>
 <jsp:include page="part/header.jsp"/>
@@ -188,8 +188,8 @@
         <br>
         <form action="Controller" method="post">
             <button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4" name="command"
-                    value="gotomenuUSDPage">
-                ${showPricesInDollars}
+                    value="gotomenupage">
+                ${showPricesInByn}
             </button>
         </form>
 

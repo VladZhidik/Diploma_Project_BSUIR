@@ -50,6 +50,10 @@ public class CommandProvider {
         commands.put(CommandName.ACTIONCHEWTUESDAY, new ActionChewTuesday());
         commands.put(CommandName.UPLOADPHOTO, new UploadAvatar());
         commands.put(CommandName.DISHOFTHEDAY, new GoToDishOfTheDayPage());
+        commands.put(CommandName.SETRATING, new SetRatingCommand());
+        commands.put(CommandName.GOTOFEEDBACKPAGE, new GoToFeedbackPage());
+        commands.put(CommandName.LEFTFEEDBACK, new LeftFeedbackCommand());
+        commands.put(CommandName.GOTOMENUUSDPAGE, new GoToMenuUSDPage());
     }
 
     public Command takeCommand(String name){

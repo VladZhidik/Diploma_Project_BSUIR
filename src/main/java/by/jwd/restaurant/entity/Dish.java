@@ -1,6 +1,8 @@
 package by.jwd.restaurant.entity;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Dish implements Serializable {
     private Integer id;
@@ -67,7 +69,8 @@ public class Dish implements Serializable {
     }
 
     public double getPrice() {
-        return price;
+        NumberFormat nf = new DecimalFormat("#.#");
+        return Double.parseDouble(nf.format(price));
     }
 
     public void setPrice(double price) {
